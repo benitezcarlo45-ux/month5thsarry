@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Question</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+        .flower {
+            position: absolute;
+            font-size: 2rem;
+            pointer-events: none;
+            animation: float 4s linear forwards;
+        }
+        body {
+            background-color: #808000; /* Olive Green */
+        }
+        .title-font {
+            font-family: 'Dancing Script', cursive;
+        }
+        .text-font {
+            font-family: 'Quicksand', sans-serif;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-6 overflow-hidden">
+    <!-- Question -->
+    <h1 class="title-font text-3xl md:text-5xl text-center text-[#FFFFE0] font-bold mb-12 max-w-xl z-10 drop-shadow-lg">
+        Do you really want to spend your lifetime with me?
+    </h1>
+
+    <!-- Buttons Container -->
+    <div class="flex gap-8 items-center z-10">
+        <button 
+            id="yesBtn"
+            class="text-font bg-[#FFFFE0] hover:bg-[#F8F8C8] text-[#404000] font-bold px-10 py-5 rounded-xl transition-all duration-200 ease-in-out text-xl shadow-lg"
+        >
+            Yes 💖
+        </button>
+
+        <button 
+            id="noBtn"
+            class="text-font bg-[#FFFFE0]/80 hover:bg-[#F8F8C8] text-[#404000] font-bold px-10 py-5 rounded-xl transition-all duration-200 ease-in-out text-xl shadow-md"
+        >
+            No 🙈
+        </button>
+    </div>
+
+    <script>
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        let sizeMultiplier = 1;
+        const sizeStep = 0.15;
+
+        // No button makes Yes bigger
+        noBtn.addEventListener('click', () => {
+            sizeMultiplier += sizeStep;
+            yesBtn.style.transform = `scale(${sizeMultiplier})`;
+        });
+
+        // Yes button opens separate love letter page
+        yesBtn.addEventListener('click', () => {
+            window.open('loveletter.html', '_blank');
+        });
+    </script>
+</body>
+</html>
